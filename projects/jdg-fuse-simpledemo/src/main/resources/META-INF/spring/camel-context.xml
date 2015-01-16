@@ -20,6 +20,7 @@
             <constant>This is a dummy body</constant>
         </setBody>
         <log message="Key: ${header.CamelInfinispanKey}, Body: ${body}"/>
+        <to uri="infinispan://localhost:11222?cacheName=default&amp;command=PUT"/>
     </route>
 </camelContext>
 
