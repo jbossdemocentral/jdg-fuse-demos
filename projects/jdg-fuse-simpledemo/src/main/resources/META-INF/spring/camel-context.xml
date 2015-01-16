@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Configures the Camel Context-->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:camel="http://camel.apache.org/schema/spring"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-  <!-- here is a sample which processes the input files
-         (leaving them in place - see the 'noop' flag)
-         then performs content based routing on the message using XPath --><camelContext xmlns="http://camel.apache.org/schema/spring">
+    <bean id="cacheManager" class="org.infinispan.manager.DefaultCacheManager" init-method="start" destroy-method="stop">
+    </bean>
+    
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
     <route>
         <from uri="timer:foo?period=5000"/>
         <setHeader headerName="CamelInfinispanKey">
@@ -19,14 +15,14 @@
         <setBody>
             <constant>This is a dummy body</constant>
         </setBody>
-        <to uri="infinispan://localhost:11222?cacheName=default&amp;command=PUT"/>
-        <to uri="log:local-put?showAll=true"/>
+        <to uri="infinispan://localhost?cacheContainer=#cacheManager&amp;command=PUT"/>
+        <to uri="log:local-put?showHeaders=true"/>
     </route>
     <route>
-        <from uri="timer:foo?period=60000"/>
-        <to uri="infinispan://localhost:11222?cacheName=default&amp;command=CLEAR"/>
-        <log message="Cache is cleared"/>
+        <from uri="infinispan://localhost?cacheContainer=#cacheManager"/>
+        <to uri="log:local-get?showHeaders=true"/>
     </route>
 </camelContext>
 
 </beans>
+
