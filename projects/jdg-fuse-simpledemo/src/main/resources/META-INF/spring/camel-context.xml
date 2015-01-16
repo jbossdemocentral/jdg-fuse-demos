@@ -19,8 +19,13 @@
         <setBody>
             <constant>This is a dummy body</constant>
         </setBody>
-        <log message="Key: ${header.CamelInfinispanKey}, Body: ${body}"/>
         <to uri="infinispan://localhost:11222?cacheName=default&amp;command=PUT"/>
+        <to uri="log:local-put?showAll=true"/>
+    </route>
+    <route>
+        <from uri="timer:foo?period=60000"/>
+        <to uri="infinispan://localhost:11222?cacheName=default&amp;command=CLEAR"/>
+        <log message="Cache is cleared"/>
     </route>
 </camelContext>
 
