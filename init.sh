@@ -131,7 +131,7 @@ sh client -r 2 -d 10 "wait-for-service -t 300000 io.fabric8.api.BootstrapComplet
 
 sh client -r 2 -d 10 "fabric:create --clean --wait-for-provisioning --profile fabric"  > /dev/null 2>&1
 
-sh client -r 2 -d 10 "fabric:profile-edit --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories='http://maven.repository.redhat.com/techpreview/all@id=techpreview-all-repository' default"  
+sh client -r 2 -d 10 "fabric:profile-edit --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories='http://maven.repository.redhat.com/techpreview/all@id=techpreview-all-repository' default" > /dev/null 2>&1 
 
 sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.apache.camel/camel-jbossdatagrid/6.4.0.Final-redhat-4/xml/features default" > /dev/null 2>&1
 
