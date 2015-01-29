@@ -6,7 +6,7 @@ DEMO="JBoss Fuse and Data Grid Demo"
 AUTHORS="Thomas Qvarnstrom, Red Hat & Christina Lin, Red Hat"
 SRC_DIR=$basedir/installs
 MVN_REPO=$basedir/target/local_mvn_repos
-REPOS=(jboss-datagrid-6.4.0.ER8-maven-repository.zip)
+REPOS=(jboss-datagrid-6.4.0-maven-repository.zip)
 
 #JDG_SERVER=jboss-datagrid-6.3.0-server.zip
 FUSE_INSTALL=jboss-fuse-full-6.1.1.redhat-412.zip
@@ -138,6 +138,8 @@ sleep 20
 echo "  - starting client"
 echo
 
+echo " DEBUG repo url = ${MVN_REPO_FULLPATH}/jboss-datagrid-6.4.0-maven-repository"
+
 ./client << EOF
 
 wait-for-service -t 300000 io.fabric8.api.BootstrapComplete 
@@ -146,23 +148,24 @@ fabric:create --clean --wait-for-provisioning --profile fabric
 
 fabric:profile-edit --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories='file:${MVN_REPO_FULLPATH}/jboss-datagrid-6.4.0-maven-repository@id=jboss-datagrid-repo' default
 
-fabric:profile-edit --repositories mvn:org.apache.camel/camel-jbossdatagrid/6.4.0.ER8-redhat-1/xml/features default
-fabric:profile-edit --repositories mvn:org.infinispan/infinispan-embedded/6.2.0.ER8-redhat-1/xml/features default
-fabric:profile-edit --repositories mvn:org.infinispan/infinispan-core/6.2.0.ER8-redhat-1/xml/features default
-fabric:profile-edit --repositories mvn:org.infinispan/infinispan-commons/6.2.0.ER8-redhat-1/xml/features default
+fabric:profile-edit --repositories mvn:org.apache.camel/camel-jbossdatagrid/6.4.0.Final-redhat-4/xml/features default
+
+fabric:profile-edit --repositories mvn:org.infinispan/infinispan-remote/6.2.0.Final-redhat-4/xml/features default
+
 
 fabric:profile-edit --repositories mvn:org.jboss.demo.jdg/features/1.0.0/xml/features default
 
-fabric:profile-create --parents feature-camel --version 1.0 simple-demo
+fabric:profile-create --parents feature-camel --version 1.0 simple-local-producer-demo
+fabric:profile-create --parents feature-camel --version 1.0 simple-local-consumer-demo
 
 fabric:version-create --parent 1.0 --default 1.1
 
-fabric:profile-edit --features local-camel-producer simple-demo 1.1
-fabric:profile-edit --features local-camel-consumer simple-demo 1.1
+fabric:profile-edit --features local-camel-producer simple-local-producer-demo 1.1
+fabric:profile-edit --features local-camel-consumer simple-local-consumer-demo 1.1
 
 container-upgrade --all 1.1
 
-container-add-profile root simple-demo
+#container-add-profile root simple-demo
 
 EOF
 

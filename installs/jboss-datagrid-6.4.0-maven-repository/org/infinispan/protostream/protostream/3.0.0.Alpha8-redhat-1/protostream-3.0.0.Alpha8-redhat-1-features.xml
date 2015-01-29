@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="protostream-3.0.0.Alpha8-redhat-1" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+   <feature name="protostream" version="3.0.0.Alpha8-redhat-1">
+      <bundle>mvn:org.jboss.logging/jboss-logging/3.1.4.GA-redhat-1</bundle>
+      <bundle>mvn:org.infinispan.protostream/protostream/3.0.0.Alpha8-redhat-1</bundle>
+   </feature>
+</features>

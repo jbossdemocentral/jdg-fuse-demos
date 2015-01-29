@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <modelVersion>4.0.0</modelVersion>
+   <parent>
+      <groupId>org.infinispan</groupId>
+      <artifactId>infinispan-parent</artifactId>
+      <version>6.2.0.Final-redhat-4</version>
+      <relativePath>../parent/pom.xml</relativePath>
+   </parent>
+
+   <artifactId>infinispan-query</artifactId>
+   <packaging>bundle</packaging>
+   <name>Infinispan Query API</name>
+   <description>Infinispan Query API module</description>
+
+   
+   <properties>
+      <module.skipComponentMetaDataProcessing>false</module.skipComponentMetaDataProcessing>
+   </properties>
+
+   <dependencies>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>infinispan-core</artifactId>
+      </dependency>
+
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>infinispan-query-dsl</artifactId>
+      </dependency>
+
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>infinispan-objectfilter</artifactId>
+      </dependency>
+
+      <dependency>
+         <groupId>org.hibernate.hql</groupId>
+         <artifactId>hibernate-hql-parser</artifactId>
+         <exclusions>
+            <exclusion>
+               <groupId>org.antlr.stringtemplate</groupId>
+               <artifactId>stringtemplate</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+
+      <dependency>
+         <groupId>org.hibernate.hql</groupId>
+         <artifactId>hibernate-hql-lucene</artifactId>
+         <exclusions>
+            <exclusion>
+               <groupId>org.antlr.stringtemplate</groupId>
+               <artifactId>stringtemplate</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-search-engine</artifactId>
+      </dependency>
+
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-search-infinispan</artifactId>
+         <exclusions>
+            <exclusion>
+               <groupId>${project.groupId}</groupId>
+               <artifactId>infinispan-lucene-directory</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      
+      <dependency>
+         <groupId>org.codehaus.jackson</groupId>
+         <artifactId>jackson-mapper-asl</artifactId>
+         <exclusions>
+            <exclusion>
+               <groupId>org.codehaus.jackson</groupId>
+               <artifactId>jackson-core-asl</artifactId>
+            </exclusion>
+         </exclusions>
+      </dependency>
+      
+      <dependency>
+         <groupId>org.codehaus.jackson</groupId>
+         <artifactId>jackson-core-asl</artifactId>
+     </dependency>
+
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>infinispan-lucene-directory</artifactId>
+      </dependency>
+
+      
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>infinispan-lucene-v3</artifactId>
+         <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>infinispan-core</artifactId>
+         <type>test-jar</type>
+         <scope>test</scope>
+      </dependency>
+
+       <dependency>
+           <groupId>${project.groupId}</groupId>
+           <artifactId>infinispan-cachestore-jdbc</artifactId>
+           <scope>test</scope>
+       </dependency>
+
+       <dependency>
+           <groupId>com.h2database</groupId>
+           <artifactId>h2</artifactId>
+           <scope>test</scope>
+       </dependency>
+
+       <dependency>
+           <groupId>c3p0</groupId>
+           <artifactId>c3p0</artifactId>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>maven-bundle-plugin</artifactId>
+            <configuration>
+               <instructions>
+                  <Export-Package>
+                     ${project.groupId}.query.*;version=${project.version};-split-package:=merge-last
+                  </Export-Package>
+               </instructions>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+</project>

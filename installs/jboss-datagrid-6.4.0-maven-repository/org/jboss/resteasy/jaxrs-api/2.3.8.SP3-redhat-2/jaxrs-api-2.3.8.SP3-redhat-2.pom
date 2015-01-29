@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>resteasy-jaxrs-all</artifactId>
+    <groupId>org.jboss.resteasy</groupId>
+    <version>2.3.8.SP3-redhat-2</version>
+  </parent>
+  <groupId>org.jboss.resteasy</groupId>
+  <artifactId>jaxrs-api</artifactId>
+  <name>JAX-RS Core API</name>
+  <description></description>
+</project>

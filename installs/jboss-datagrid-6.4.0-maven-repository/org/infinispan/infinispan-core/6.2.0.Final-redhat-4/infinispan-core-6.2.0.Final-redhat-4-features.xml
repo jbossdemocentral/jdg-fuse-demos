@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="infinispan-core-6.2.0.Final-redhat-4" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+   <repository>mvn:org.infinispan/infinispan-commons/6.2.0.Final-redhat-4/xml/features</repository>
+
+   <feature name="infinispan-core" version="6.2.0.Final-redhat-4">
+      <feature version="6.2.0.Final-redhat-4">infinispan-commons</feature>
+      <bundle>mvn:org.infinispan/infinispan-core/6.2.0.Final-redhat-4</bundle>
+      <feature>transaction</feature>
+      <bundle>mvn:org.jgroups/jgroups/3.6.1.Final-redhat-1</bundle>
+   </feature>
+</features>

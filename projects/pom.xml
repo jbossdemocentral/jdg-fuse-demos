@@ -39,9 +39,9 @@
         <!--module>features</module-->
     
     
-    <module>local-jdg-config</module>
+    
     <module>features</module>
-    <module>offline-repo</module>
+    
     </modules>
 
     <dependencies>

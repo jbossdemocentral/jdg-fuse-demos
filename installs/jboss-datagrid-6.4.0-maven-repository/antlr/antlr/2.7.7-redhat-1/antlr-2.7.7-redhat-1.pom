@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>antlr</groupId>
+  <parent>
+        <artifactId>jboss-parent</artifactId>
+        <groupId>org.jboss</groupId>
+        <version>8-redhat-1</version>
+    </parent>
+   <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>org.jboss.component.management</groupId>
+               <artifactId>jboss-dependency-management-all</artifactId>
+               <version>6.0.0-redhat-1</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+           <dependency>
+               <groupId>org.jboss.component.management</groupId>
+               <artifactId>jboss-project-dependency-relocations</artifactId>
+               <version>6.0.0-redhat-1</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+       </dependencies>
+   </dependencyManagement>
+  <artifactId>antlr</artifactId>
+  <packaging>jar</packaging>
+  <version>2.7.7-redhat-1</version>
+  <name>AntLR Parser Generator</name>
+  <description>A framework for constructing recognizers, compilers,
+    and translators from grammatical descriptions containing
+    Java, C#, C++, or Python actions.</description>
+  <url>http://www.antlr.org/</url>
+  <licenses>
+    <license>
+      <name>BSD License</name>
+      <url>http://www.antlr.org/license.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+</project>

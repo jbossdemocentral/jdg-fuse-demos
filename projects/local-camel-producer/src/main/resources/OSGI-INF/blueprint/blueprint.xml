@@ -36,7 +36,7 @@
             <simple>${date:now:yyyy-MM-dd'T'HH:mm:ss}</simple>
         </setHeader>
         <to uri="infinispan://foo?cacheContainer=#cacheManager"/>
-        <to uri="log:local-put?showAll=true"/>
+        <log message="Updated entry ${header.CamelInfinispanKey} with value ${header.CamelInfinispanValue}" loggingLevel="INFO" logName="local-put"/>
     </route>
 </camelContext>
 

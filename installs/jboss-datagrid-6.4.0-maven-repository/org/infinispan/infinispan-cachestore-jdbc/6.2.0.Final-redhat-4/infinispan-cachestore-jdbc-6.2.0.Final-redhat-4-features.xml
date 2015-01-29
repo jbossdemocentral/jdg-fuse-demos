@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="infinispan-cachestore-jdbc-6.2.0.Final-redhat-4" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+   <repository>mvn:org.infinispan/infinispan-core/6.2.0.Final-redhat-4/xml/features</repository>
+
+   <feature name="infinispan-cachestore-jdbc" version="6.2.0.Final-redhat-4">
+      <bundle>mvn:org.infinispan/infinispan-cachestore-jdbc/6.2.0.Final-redhat-4</bundle>
+
+      <bundle>wrap:mvn:c3p0/c3p0/0.9.1.2$DynamicImport-Package=*</bundle>
+      <!-- <bundle>wrap:mvn:com.mchange/c3p0/0.9.1.2$DynamicImport-Package=*</bundle> -->
+      <!-- <bundle>wrap:mvn:com.mchange/mchange-commons-java/0.2.7</bundle> -->
+
+      <feature version="6.2.0.Final-redhat-4">infinispan-core</feature>
+   </feature>
+</features>

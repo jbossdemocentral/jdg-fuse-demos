@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="infinispan-remote-6.2.0.Final-redhat-4" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+   <feature name="infinispan-remote" version="6.2.0.Final-redhat-4">
+      <bundle>mvn:org.infinispan/infinispan-remote/6.2.0.Final-redhat-4</bundle>
+   </feature>
+</features>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-parent</artifactId>
+    <version>22-redhat-2</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>commons-dbcp</groupId>
+  <artifactId>commons-dbcp</artifactId>
+  <version>1.4-redhat-2</version>
+  <name>Commons DBCP</name>
+
+  <inceptionYear>2001</inceptionYear>
+  <description>Commons Database Connection Pooling</description>
+  <url>http://commons.apache.org/dbcp/</url>
+
+  <distributionManagement>
+    <site>
+      <id>people.apache.org</id>
+      <name>Commons DBCP</name>
+      <url>scp://people.apache.org/www/commons.apache.org/dbcp</url>
+    </site>
+  </distributionManagement>
+  
+  <issueManagement>
+    <system>jira</system>
+    <url>http://issues.apache.org/jira/browse/DBCP</url>
+  </issueManagement>
+
+  <scm>
+    <connection>scm:svn:http://svn.apache.org/repos/asf/commons/proper/dbcp/trunk</connection>
+    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/commons/proper/dbcp/trunk</developerConnection>
+    <url>http://svn.apache.org/viewvc/commons/proper/dbcp/trunk</url>
+  </scm>
+
+  <developers>
+    <developer>
+      <name>Morgan Delagrange</name>
+      <id>morgand</id>
+      <email></email>
+      <organization></organization>
+    </developer>
+    <developer>
+      <name>Geir Magnusson</name>
+      <id>geirm</id>
+      <email></email>
+      <organization></organization>
+    </developer>
+    <developer>
+      <name>Craig McClanahan</name>
+      <id>craigmcc</id>
+      <email></email>
+      <organization></organization>
+    </developer>
+    <developer>
+      <name>John McNally</name>
+      <id>jmcnally</id>
+      <email></email>
+      <organization></organization>
+    </developer>
+    <developer>
+      <name>Martin Poeschl</name>
+      <id>mpoeschl</id>
+      <email>mpoeschl@marmot.at</email>
+      <organization>tucana.at</organization>
+    </developer>
+    <developer>
+      <name>Rodney Waldhoff</name>
+      <id>rwaldhoff</id>
+      <email></email>
+      <organization></organization>
+    </developer>
+    <developer>
+      <name>David Weinrich</name>
+      <id>dweinr1</id>
+      <email></email>
+      <organization></organization>
+    </developer>
+    <developer>
+      <name>Dirk Verbeeck</name>
+      <id>dirkv</id>
+      <email></email>
+      <organization></organization>
+    </developer>
+    <developer>
+      <name>Yoav Shapira</name>
+      <id>yoavs</id>
+      <email>yoavs@apache.org</email>
+      <organization>Apache Software Foundation</organization>
+    </developer>
+    <developer>
+      <name>Phil Steitz</name>
+      <id>psteitz</id>
+      <email></email>
+      <organization></organization>
+    </developer>
+    <developer>
+      <name>Jörg Schaible</name>
+      <id>joehni</id>
+      <email>joerg.schaible@gmx.de</email>
+      <organization></organization>
+      <timezone>+1</timezone>
+    </developer>
+    <developer>
+      <name>Mark Thomas</name>
+      <id>markt</id>
+      <email>markt@apache.org</email>
+      <organization>Apache Software Foundation</organization>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor>
+      <name>Todd Carmichael</name>
+      <email>toddc@concur.com</email>
+    </contributor>
+    <contributor>
+      <name>Wayne Woodfield</name>
+    </contributor>
+    <contributor>
+      <name>Dain Sundstrom</name>
+      <email>dain@apache.org</email>
+    </contributor>
+    <contributor>
+      <name>Philippe Mouawad</name>
+    </contributor>
+  </contributors>
+
+  <dependencies>
+    <dependency>
+      <groupId>commons-pool</groupId>
+      <artifactId>commons-pool</artifactId>
+    </dependency>
+
+    <!-- For managed connections -->
+    <dependency>
+      <groupId>org.jboss.spec.javax.transaction</groupId>
+      <artifactId>jboss-transaction-api_1.1_spec</artifactId> 
+       <optional>true</optional>
+    </dependency>
+
+  </dependencies>
+
+  <properties>
+    <maven.compile.source>1.6</maven.compile.source>
+    <maven.compile.target>1.6</maven.compile.target>
+    <commons.componentid>dbcp</commons.componentid>
+    <commons.release.version>1.4</commons.release.version>
+    <commons.jira.id>DBCP</commons.jira.id>
+    <commons.jira.pid>12310469</commons.jira.pid>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.component.management</groupId>
+        <artifactId>jboss-dependency-management-all</artifactId>
+        <version>6.0.1-redhat-1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement> 
+
+  <build>
+    <sourceDirectory>src/java</sourceDirectory>
+    <testSourceDirectory>src/test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/test</directory>
+        <includes>
+          <include>testpool.jocl</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>.</directory>
+        <targetPath>META-INF</targetPath>
+          <includes>
+            <include>NOTICE.txt</include>
+            <include>LICENSE.txt</include>
+          </includes>
+        </resource>
+      </resources>
+      <testResources>
+        <testResource>
+          <directory>${basedir}/src/test</directory>
+          <includes>
+            <include>testpool.jocl</include>
+          </includes>
+        </testResource>
+      </testResources>
+      <plugins>
+        <!-- Specify cobertura version for "cobertura:cobertura" goal -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+            <reportFormat>plain</reportFormat>
+            <excludes>
+              <exclude>**/Tester*.java</exclude>
+              <exclude>**/Test*$*.java</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <configuration>
+            <descriptors>
+              <descriptor>src/assembly/bin.xml</descriptor>
+              <descriptor>src/assembly/src.xml</descriptor>
+            </descriptors>
+            <tarLongFileMode>gnu</tarLongFileMode>
+          </configuration>
+        </plugin>
+      </plugins>
+  </build>
+
+</project>

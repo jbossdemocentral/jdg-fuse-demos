@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <!-- Parent -->
+  <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>6-redhat-1</version>
+  </parent>
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jboss.naming</groupId>
+  <artifactId>jnp-client</artifactId>
+  <name>JBoss Naming Client</name>
+  <version>5.0.5.Final-redhat-1</version>
+  <description>The JBoss Naming Client</description>
+  <url>http://www.jboss.org</url>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>buildjar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <jar jarfile="${basedir}/target/jnp-client-${project.version}.jar" update="true" manifest="${basedir}/../jnpserver/src/etc/default.mf">
+                  <fileset dir="${basedir}/../jnpserver/target/classes">
+                    <include name="org/jnp/interfaces/**" />
+                    <include name="org/jnp/server/NamingServer_Stub.class" />
+                    <include name="org/jboss/naming/**" />
+                  </fileset>
+                  <fileset file="${basedir}/../JBossORG-EULA.txt" />
+                </jar>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+        <inherited>true</inherited>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.jboss</groupId>
+      <artifactId>jboss-common-core</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.jboss.logging</groupId>
+      <artifactId>jboss-logging</artifactId>
+    </dependency>
+    <!--
+    The jnp-client module depends on the jnpserver module at build time
+    in order to copy the classes, but not at runtime.
+    <dependency>
+      <groupId>org.jboss.naming</groupId>
+      <artifactId>jnpserver</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    -->
+  </dependencies>
+</project>

@@ -36,7 +36,7 @@
             <setBody>
                 <simple>${header.CamelInfinispanOperationResult}</simple>
             </setBody>
-            <to uri="log:local-get"/>
+            <log message="Retrived Event that entry ${header.CamelInfinispanKey} was updated with value ${body}" loggingLevel="INFO" logName="local-get"/>
         </filter>
     </route>
 </camelContext>
