@@ -27,11 +27,4 @@
 
     <artifactId>local-camel-consumer</artifactId>
     <packaging>bundle</packaging>
-    <dependencies>
-    	<dependency>
-    		<groupId>org.jboss.demo.jdg</groupId>
-    		<artifactId>local-jdg-config</artifactId>
-    		<version>1.0.0</version>
-    	</dependency>
-    </dependencies>
 </project>

@@ -34,7 +34,7 @@
 		<module>local-camel-producer</module>
 		<module>features</module>
 	    <module>remote-camel-consumer</module>
-	    <module>remote-camel-consumer</module>
+	    <module>remote-camel-producer</module>
     </modules>
 
     <dependencies>
