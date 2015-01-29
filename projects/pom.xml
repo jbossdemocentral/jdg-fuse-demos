@@ -1,47 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one or more
-    contributor license agreements.  See the NOTICE file distributed with
-    this work for additional information regarding copyright ownership.
-    The ASF licenses this file to You under the Apache License, Version 2.0
-    (the "License"); you may not use this file except in compliance with
-    the License.  You may obtain a copy of the License at
+<!-- Licensed to the Apache Software Foundation (ASF) under one or more contributor 
+	license agreements. See the NOTICE file distributed with this work for additional 
+	information regarding copyright ownership. The ASF licenses this file to 
+	You under the Apache License, Version 2.0 (the "License"); you may not use 
+	this file except in compliance with the License. You may obtain a copy of 
+	the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required 
+	by applicable law or agreed to in writing, software distributed under the 
+	License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS 
+	OF ANY KIND, either express or implied. See the License for the specific 
+	language governing permissions and limitations under the License. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	<modelVersion>4.0.0</modelVersion>
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
---><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.jboss.demo.jdg</groupId>
+	<groupId>org.jboss.demo.jdg</groupId>
 	<artifactId>camel-jbossdatagrid</artifactId>
-    <version>1.0.0</version>
-    <packaging>pom</packaging>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
 
-    <name>JBoss Data Grid Camel Component Demo</name>
-    <description>This is a demo for using the camel-jbossdatagrid component in Fuse</description>
-    <url>http://blog.thomasqvarnstrom.com</url>
+	<name>JBoss Data Grid Camel Component Demo</name>
+	<description>This is a demo for using the camel-jbossdatagrid component in Fuse</description>
+	<url>http://blog.thomasqvarnstrom.com</url>
 
-    <properties>
-        <fuse-version>2.12.0.redhat-611412</fuse-version> <!-- for Fuse 6.1 -->
-        <jdg-version>6.1.0.Final-redhat-4</jdg-version> <!-- for JDG 6.4 --> 		
-        <camel-jbossdatagrid-component-version>6.4.0.ER8-redhat-1</camel-jbossdatagrid-component-version>
-    </properties>
+	<properties>
+		<fuse-version>2.12.0.redhat-611412</fuse-version> <!-- for Fuse 6.1 -->
+		<jdg-version>6.1.0.Final-redhat-4</jdg-version> <!-- for JDG 6.4 -->
+		<camel-jbossdatagrid-component-version>6.4.0.Final-redhat-4</camel-jbossdatagrid-component-version>
+	</properties>
 
-    <modules>
+	<modules>
 		<module>local-camel-consumer</module>
 		<module>local-camel-producer</module>
-        <!--module>features</module-->
-    
-    
-    
-    <module>features</module>
-    
+		<module>features</module>
+	    <module>remote-camel-consumer</module>
+	    <module>remote-camel-consumer</module>
     </modules>
 
     <dependencies>
@@ -127,15 +120,6 @@
                 <enabled>false</enabled>
             </snapshots>
             <url>http://repo.fusesource.com/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>local-jdg-6.4</id>
-            <name>JBoss DG Downloaded Maven Repo</name>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots/>
-            <url>file:///${basedir}/../../target/local_mvn_repos/jboss-datagrid-6.4.0-maven-repository</url>
         </repository>
     </repositories>
 </project>
