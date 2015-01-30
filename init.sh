@@ -135,7 +135,7 @@ sh client -r 2 -d 10 "fabric:profile-edit --pid io.fabric8.agent/org.ops4j.pax.u
 
 sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.apache.camel/camel-jbossdatagrid/6.4.0.Final-redhat-4/xml/features default" > /dev/null 2>&1
 
-sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.infinispan/infinispan-remote/6.2.0.Final-redhat-4/xml/features default" > /dev/null 2>&1
+#sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.infinispan/infinispan-remote/6.2.0.Final-redhat-4/xml/features default" > /dev/null 2>&1
 
 sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.jboss.demo.jdg/features/1.0.0/xml/features default" > /dev/null 2>&1
 
