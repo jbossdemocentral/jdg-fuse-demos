@@ -92,7 +92,12 @@ mkdir target
 echo "  - installing fuse"
 echo
 unzip -q -d target $SRC_DIR/$FUSE_INSTALL
-sed -i '' "s/#admin/admin/" target/jboss-fuse-6.*/etc/users.properties
+if [ "$(uname)" =  "Linux" ]
+then 
+	sed -i "s/#admin/admin/" target/jboss-fuse-6.*/etc/users.properties
+else
+	sed -i '' "s/#admin/admin/" target/jboss-fuse-6.*/etc/users.properties
+fi
 
 echo "  - installing datagrid"
 echo
