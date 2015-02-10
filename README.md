@@ -48,17 +48,4 @@ Demos
 
 	In this demo Fuse/Camel is used to process a dropped CSV file, transform it to Java Object (one per line) which is put into a remote jbossdatagrid. We then start JDG library instances using the remote datagrid as a loader and run map/reduce on the Java Objects to create BI reports. 
 
-Run local producer Demo
--------------------------------
-1. Make sure that you have done the setup.
-1. Start a CLI client to Fuse
-
-		$ target/jboss-fuse-6.1.1.redhat-412/bin/client
-1. Add the demo config to the root container
-
-		JBossFuse:admin@root> fabric:container-create-child root local_producer 2
-
-1. Open the log file to verify that everything works
-
-		JBossFuse:admin@root> log:tail
 	
