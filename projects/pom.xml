@@ -25,7 +25,6 @@
 
 	<properties>
 		<fuse-version>2.12.0.redhat-611412</fuse-version> <!-- for Fuse 6.1 -->
-		<jdg-version>6.1.0.Final-redhat-4</jdg-version> <!-- for JDG 6.4 -->
 		<camel-jbossdatagrid-component-version>6.4.0.Final-redhat-4</camel-jbossdatagrid-component-version>
 	</properties>
 
