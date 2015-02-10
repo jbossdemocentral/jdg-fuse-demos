@@ -118,7 +118,7 @@ pushd target/jboss-fuse*/bin > /dev/null
 ./start
 popd > /dev/null
 
-echo "  - startng datagrid"
+echo "  - starting datagrid"
 echo
 
 pushd target/jboss-datagrid*/bin > /dev/null 
