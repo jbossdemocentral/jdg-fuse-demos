@@ -34,6 +34,7 @@
 		<module>features</module>
 	    <module>remote-camel-consumer</module>
 	    <module>remote-camel-producer</module>
+	    <module>claim-check-demo</module>
     </modules>
 
     <dependencies>

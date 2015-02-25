@@ -148,6 +148,8 @@ sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.
 sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-local_consumer" > /dev/null 2>&1
 sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-remote_producer" > /dev/null 2>&1
 sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-remote_consumer" > /dev/null 2>&1
+sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-claim_check" > /dev/null 2>&1
+
 
 sh client -r 2 -d 10 "fabric:version-create --parent 1.0 --default 1.1" > /dev/null 2>&1
 
@@ -155,6 +157,7 @@ sh client -r 2 -d 10 "fabric:profile-edit --features local-camel-producer demo-l
 sh client -r 2 -d 10 "fabric:profile-edit --features local-camel-consumer demo-local_consumer 1.1" > /dev/null 2>&1
 sh client -r 2 -d 10 "fabric:profile-edit --features remote-camel-producer demo-remote_producer 1.1" > /dev/null 2>&1
 sh client -r 2 -d 10 "fabric:profile-edit --features remote-camel-consumer demo-remote_consumer 1.1" > /dev/null 2>&1
+sh client -r 2 -d 10 "fabric:profile-edit --features claim-check-demo demo-claim_check 1.1" > /dev/null 2>&1
 
 sh client -r 2 -d 10 "container-upgrade --all 1.1" > /dev/null 2>&1
 

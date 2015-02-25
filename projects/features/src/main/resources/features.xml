@@ -37,6 +37,11 @@
         <feature dependency="true">camel-jbossdatagrid</feature>
         <bundle>mvn:org.jboss.demo.jdg/remote-camel-producer/${project.version}</bundle>
     </feature>
+    
+    <feature name="claim-check-demo" resolver="(obr)" version="${project.version}">
+        <feature dependency="true">camel-jbossdatagrid</feature>
+        <bundle>mvn:org.jboss.demo.jdg/claim-check-demo/${project.version}</bundle>
+    </feature>
    
     
 </features>

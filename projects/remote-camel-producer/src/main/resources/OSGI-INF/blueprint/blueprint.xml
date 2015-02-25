@@ -20,18 +20,18 @@
            xsi:schemaLocation="
            http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
 	
-    <camelContext id="local-camel-producer" xmlns="http://camel.apache.org/schema/blueprint">
-    <route>
-        <from uri="timer://local?fixedRate=true&amp;period=5000"/>
-        <setHeader headerName="CamelInfinispanKey">
-            <constant>MyTimeStamp</constant>
-        </setHeader>
-        <setHeader headerName="CamelInfinispanValue">
-            <simple>${date:now:yyyy-MM-dd'T'HH:mm:ss}</simple>
-        </setHeader>
-        <to uri="infinispan://localhost"/>
-        <log message="Updated entry ${header.CamelInfinispanKey} with value ${header.CamelInfinispanValue}" loggingLevel="INFO" logName="remote-put"/>
-    </route>
+    <camelContext id="remote-camel-producer" xmlns="http://camel.apache.org/schema/blueprint">
+  <route>
+    <from uri="timer://local?fixedRate=true&amp;period=5000"/>
+    <setHeader headerName="CamelInfinispanKey">
+      <constant>MyTimeStamp</constant>
+    </setHeader>
+    <setHeader headerName="CamelInfinispanValue">
+      <simple>${date:now:yyyy-MM-dd'T'HH:mm:ss}</simple>
+    </setHeader>
+    <to uri="infinispan://localhost"/>
+    <log message="Updated entry ${header.CamelInfinispanKey} with value ${header.CamelInfinispanValue}" loggingLevel="INFO" logName="remote-put"/>
+  </route>
 </camelContext>
 
 </blueprint>
