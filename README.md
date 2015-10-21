@@ -10,8 +10,8 @@ Setup
 ---------------
 To setup the infrastructure for the demo download the follwoing files to the `installs` directory:
 
-* jboss-fuse-full-6.1.1.redhat-412.zip
-* jboss-datagrid-6.4.0-server.zip
+* jboss-fuse-full-6.2.0.redhat-133.zip
+* jboss-datagrid-6.5.0-server.zip
 
 After that run the `init.sh` script
 
@@ -23,23 +23,23 @@ Demos
 
 	A simple demo that stores a key/value pair in JBoss Data Grid. JDG is deployed as clustered library mode
 	
-		$ target/jboss-fuse-6.1.1.redhat-412/bin/client -r 2 -d 40 'container-create-child --profile demo-local_producer root local_producer'
+		$ target/jboss-fuse-6.2.0.redhat-133/bin/client -r 2 -d 40 'container-create-child --profile demo-local_producer root local_producer'
 	
 1. **Local consumer** 
 
 	A simple demo that can react to a `CACHE_ENTRY_MODIFIED` event and read the key/value from JBoss Data Grid. JDG is deployed as clustered library mode. 
 	
-		$ target/jboss-fuse-6.1.1.redhat-412/bin/client -r 2 -d 40 'container-create-child --profile demo-local_consumer root local_consumer'
+		$ target/jboss-fuse-6.2.0.redhat-133/bin/client -r 2 -d 40 'container-create-child --profile demo-local_consumer root local_consumer'
 1. **Simple-remote-producer**
 
 	A simple demo that stores a key/value pair in JBoss Data Grid. JDG is deployed as a standalone process.
 	
-		$ target/jboss-fuse-6.1.1.redhat-412/bin/client -r 2 -d 40 'container-create-child --profile demo-remote_producer root remote_producer'
+		$ target/jboss-fuse-6.2.0.redhat-133/bin/client -r 2 -d 40 'container-create-child --profile demo-remote_producer root remote_producer'
 1. **Simple-remote-consumer**
 
 	A simple demo that uses a timer to trigger a get from JBoss Data Grid. JDG is deployed as a standalone process.
 	
-		$ target/jboss-fuse-6.1.1.redhat-412/bin/client -r 2 -d 40 'container-create-child --profile demo-remote_consumer root remote_consumer'
+		$ target/jboss-fuse-6.2.0.redhat-133/bin/client -r 2 -d 40 'container-create-child --profile demo-remote_consumer root remote_consumer'
 		
 1. **Claim-check-eip** _In progress_
 	

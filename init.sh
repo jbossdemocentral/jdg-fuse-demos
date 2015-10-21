@@ -139,11 +139,9 @@ sh client -r 2 -d 10 "wait-for-service -t 300000 io.fabric8.api.BootstrapComplet
 
 sh client -r 2 -d 10 "fabric:create --clean --wait-for-provisioning --profile fabric"  >> ${FUSE_INSTALL_LOG} 2>&1
 
-sh client -r 2 -d 10 "fabric:profile-edit --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories='https://maven.repository.redhat.com/ga@id=jboss-ga-repository' default" >> ${FUSE_INSTALL_LOG} 2>&1
+sh client -r 2 -d 10 "fabric:profile-edit --pid   io.fabric8.maven/io.fabric8.maven.repositories='\${profile:io.fabric8.agent/org.ops4j.pax.url.mvn.repositories}, https://maven.repository.redhat.com/ga@id=jboss-ga-repository' default" >> ${FUSE_INSTALL_LOG} 2>&1
 
 sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.apache.camel/camel-jbossdatagrid/6.5.0.Final-redhat-5/xml/features default" >> ${FUSE_INSTALL_LOG} 2>&1
-
-#sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.infinispan/infinispan-remote/6.2.0.Final-redhat-4/xml/features default" > /dev/null 2>&1
 
 sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.jboss.demo.jdg/features/1.0.0/xml/features default" >> ${FUSE_INSTALL_LOG} 2>&1
 

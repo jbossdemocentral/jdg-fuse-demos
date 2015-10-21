@@ -15,31 +15,35 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<features name="org.jboss.demo.jdg">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.0.0" name="org.jboss.demo.jdg">
 
     <!-- Simple demo with producer and consumer using local data grid -->
     <feature name="local-camel-consumer" resolver="(obr)" version="${project.version}">
-        <feature dependency="true">camel-jbossdatagrid</feature>
+    		<feature>camel-core</feature>
+        <feature>camel-jbossdatagrid</feature>
         <bundle>mvn:org.jboss.demo.jdg/local-camel-consumer/${project.version}</bundle>
     </feature>
     
     <feature name="local-camel-producer" resolver="(obr)" version="${project.version}">
-        <feature dependency="true">camel-jbossdatagrid</feature>
+    		<feature>camel-core</feature>
+        <feature>camel-jbossdatagrid</feature>
         <bundle>mvn:org.jboss.demo.jdg/local-camel-producer/${project.version}</bundle>
     </feature>
     
     <feature name="remote-camel-consumer" resolver="(obr)" version="${project.version}">
-        <feature dependency="true">camel-jbossdatagrid</feature>
+    		<feature>camel-core</feature>
+        <feature>camel-jbossdatagrid</feature>
         <bundle>mvn:org.jboss.demo.jdg/remote-camel-consumer/${project.version}</bundle>
     </feature>
     
     <feature name="remote-camel-producer" resolver="(obr)" version="${project.version}">
-        <feature dependency="true">camel-jbossdatagrid</feature>
+    		<feature>camel-core</feature>
+        <feature>camel-jbossdatagrid</feature>
         <bundle>mvn:org.jboss.demo.jdg/remote-camel-producer/${project.version}</bundle>
     </feature>
     
     <feature name="claim-check-demo" resolver="(obr)" version="${project.version}">
-        <feature dependency="true">camel-jbossdatagrid</feature>
+        <feature>camel-jbossdatagrid</feature>
         <bundle>mvn:org.jboss.demo.jdg/claim-check-demo/${project.version}</bundle>
     </feature>
    
