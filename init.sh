@@ -91,15 +91,18 @@ mkdir target
 echo "  - installing fuse"
 echo
 unzip -q -d target $SRC_DIR/$FUSE_INSTALL
+
+FUSE_HOME=$(cd target/jboss-fuse-6.* && pwd)
+
 if [ "$(uname)" =  "Linux" ]
 then
-	sed -i "s/#admin/admin/" target/jboss-fuse-6.*/etc/users.properties
-	sed -i "s:org.ops4j.pax.url.mvn.repositories}:org.ops4j.pax.url.mvn.repositories}  , \\\:g"  target/jboss-fuse-6.*/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
-	echo "    https://maven.repository.redhat.com/ga@id=jboss-ga-repository" >> target/jboss-fuse-6.*/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
+	sed -i "s/#admin/admin/" ${FUSE_HOME}/etc/users.properties
+	sed -i "/^io.fabric8.maven.repositories/ s/$/ , \\\/" ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
+	echo "    https://maven.repository.redhat.com/ga@id=jboss-ga-repository" >> ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
 else
-	sed -i '' "s/#admin/admin/" target/jboss-fuse-6.*/etc/users.properties
-	sed -i '' "s:org.ops4j.pax.url.mvn.repositories}:org.ops4j.pax.url.mvn.repositories}  , \\\:g"  target/jboss-fuse-6.*/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
-	echo "    https://maven.repository.redhat.com/ga@id=jboss-ga-repository" >> target/jboss-fuse-6.*/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
+	sed -i '' "s/#admin/admin/" ${FUSE_HOME}/etc/users.properties
+	sed -i '' "/^io.fabric8.maven.repositories/ s/$/ , \\\/" ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
+	echo "    https://maven.repository.redhat.com/techpreview/all/@id=jboss-techpreview-repository" >> ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
 fi
 
 echo "  - installing datagrid"
