@@ -97,12 +97,15 @@ FUSE_HOME=$(cd target/jboss-fuse-6.* && pwd)
 if [ "$(uname)" =  "Linux" ]
 then
 	sed -i "s/#admin/admin/" ${FUSE_HOME}/etc/users.properties
-	sed -i "/^io.fabric8.maven.repositories/ s/$/ , \\\/" ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
-	echo "    https://maven.repository.redhat.com/ga@id=jboss-ga-repository" >> ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
+	sed -i '/external\@id=springsource\.external\.repo/s/$/, \\/g' ${FUSE_HOME}/etc/org.ops4j.pax.url.mvn.cfg
+	echo "    https://maven.repository.redhat.com/techpreview/all/@id=jboss-techpreview-repository" >> ${FUSE_HOME}/etc/org.ops4j.pax.url.mvn.cfg
+	sed -i '/id\=ebrexternal/s/$/, \https:\/\/maven\.repository\.redhat.com\/techpreview\/all\/\@id\=jboss-techpreview-repository /g' ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.agent.properties
+fi
 else
 	sed -i '' "s/#admin/admin/" ${FUSE_HOME}/etc/users.properties
-	sed -i '' "/^io.fabric8.maven.repositories/ s/$/ , \\\/" ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
-	echo "    https://maven.repository.redhat.com/techpreview/all/@id=jboss-techpreview-repository" >> ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
+	sed -i '' '/external\@id=springsource\.external\.repo/s/$/, \\/g' ${FUSE_HOME}/etc/org.ops4j.pax.url.mvn.cfg
+	echo "    https://maven.repository.redhat.com/techpreview/all/@id=jboss-techpreview-repository" >> ${FUSE_HOME}/etc/org.ops4j.pax.url.mvn.cfg
+	sed -i '' '/id\=ebrexternal/s/$/, \https:\/\/maven\.repository\.redhat.com\/techpreview\/all\/\@id\=jboss-techpreview-repository /g' ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.agent.properties
 fi
 
 echo "  - installing datagrid"
