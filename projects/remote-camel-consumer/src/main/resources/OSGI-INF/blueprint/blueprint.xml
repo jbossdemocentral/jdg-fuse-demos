@@ -14,14 +14,24 @@
 	xsi:schemaLocation="
            http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
 
+	<bean id="remoteCacheManagerFactory" class="org.jboss.demo.jdg.RemoteCacheManagerFactory">  
+	    <argument value="localhost"/>      
+	    <argument value="11222"/>      
+	</bean>
+ 
+	<bean id="cacheManager"
+    	factory-ref="remoteCacheManagerFactory" 
+    	factory-method="newRemoteCacheManager">   
+	</bean>
+	
 	<camelContext id="remote-camel-consumer"
 		xmlns="http://camel.apache.org/schema/blueprint">
 		<route>
-			<from uri="timer://local?fixedRate=true&amp;period=1000" />
+			<from uri="infinispan://?cacheContainer=#cacheManager&amp;sync=false" />
 			<setHeader headerName="CamelInfinispanKey">
-				<constant>MyTimeStamp</constant>
-			</setHeader>
-			<to uri="infinispan://localhost?command=GET" />
+                <simple>${out.header.CamelInfinispanKey}</simple>
+            </setHeader>
+			<to uri="infinispan://?cacheContainer=#cacheManager&amp;command=GET" />
 			<setBody>
 				<simple>${header.CamelInfinispanOperationResult}</simple>
 			</setBody>
