@@ -97,15 +97,12 @@ FUSE_HOME=$(cd target/jboss-fuse-6.* && pwd)
 if [ "$(uname)" =  "Linux" ]
 then
 	sed -i "s/#admin/admin/" ${FUSE_HOME}/etc/users.properties
-	sed -i '/external\@id=springsource\.external\.repo/s/$/, \\/g' ${FUSE_HOME}/etc/org.ops4j.pax.url.mvn.cfg
-	echo "    https://maven.repository.redhat.com/techpreview/all/@id=jboss-techpreview-repository" >> ${FUSE_HOME}/etc/org.ops4j.pax.url.mvn.cfg
-	sed -i '/id\=ebrexternal/s/$/, \https:\/\/maven\.repository\.redhat.com\/techpreview\/all\/\@id\=jboss-techpreview-repository /g' ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.agent.properties
-fi
+	sed -i "/^io.fabric8.maven.repositories/ s/$/ , \\\/" ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
+	echo "    https://maven.repository.redhat.com/ga@id=jboss-ga-repository" >> ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
 else
 	sed -i '' "s/#admin/admin/" ${FUSE_HOME}/etc/users.properties
-	sed -i '' '/external\@id=springsource\.external\.repo/s/$/, \\/g' ${FUSE_HOME}/etc/org.ops4j.pax.url.mvn.cfg
-	echo "    https://maven.repository.redhat.com/techpreview/all/@id=jboss-techpreview-repository" >> ${FUSE_HOME}/etc/org.ops4j.pax.url.mvn.cfg
-	sed -i '' '/id\=ebrexternal/s/$/, \https:\/\/maven\.repository\.redhat.com\/techpreview\/all\/\@id\=jboss-techpreview-repository /g' ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.agent.properties
+	sed -i '' "/^io.fabric8.maven.repositories/ s/$/ , \\\/" ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
+	echo "    https://maven.repository.redhat.com/techpreview/all/@id=jboss-techpreview-repository" >> ${FUSE_HOME}/fabric/import/fabric/profiles/default.profile/io.fabric8.maven.properties
 fi
 
 echo "  - installing datagrid"
@@ -151,15 +148,17 @@ sh client -r 2 -d 10 "fabric:create --clean --wait-for-provisioning --profile fa
 
 #sh client -r 2 -d 10 "fabric:profile-edit --pid   io.fabric8.maven/io.fabric8.maven.repositories='\${profile:io.fabric8.agent/org.ops4j.pax.url.mvn.repositories}, https://maven.repository.redhat.com/ga@id=jboss-ga-repository' default" >> ${FUSE_INSTALL_LOG} 2>&1
 
-sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.apache.camel/camel-jbossdatagrid/6.5.0.Final-redhat-5/xml/features default" >> ${FUSE_INSTALL_LOG} 2>&1
+sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-base" >> ${FUSE_INSTALL_LOG} 2>&1
 
-sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.jboss.demo.jdg/features/1.0.0/xml/features default" >> ${FUSE_INSTALL_LOG} 2>&1
+sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.apache.camel/camel-jbossdatagrid/6.5.0.Final-redhat-5/xml/features demo-base" >> ${FUSE_INSTALL_LOG} 2>&1
 
-sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-local_producer" >> ${FUSE_INSTALL_LOG} 2>&1
-sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-local_consumer" >> ${FUSE_INSTALL_LOG} 2>&1
-sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-remote_producer" >> ${FUSE_INSTALL_LOG} 2>&1
-sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-remote_consumer" >> ${FUSE_INSTALL_LOG} 2>&1
-sh client -r 2 -d 10 "fabric:profile-create --parents feature-camel --version 1.0 demo-claim_check" >> ${FUSE_INSTALL_LOG} 2>&1
+sh client -r 2 -d 10 "fabric:profile-edit --repositories mvn:org.jboss.demo.jdg/features/1.0.0/xml/features demo-base" >> ${FUSE_INSTALL_LOG} 2>&1
+
+sh client -r 2 -d 10 "fabric:profile-create --parents demo-base --version 1.0 demo-local_producer" >> ${FUSE_INSTALL_LOG} 2>&1
+sh client -r 2 -d 10 "fabric:profile-create --parents demo-base --version 1.0 demo-local_consumer" >> ${FUSE_INSTALL_LOG} 2>&1
+sh client -r 2 -d 10 "fabric:profile-create --parents demo-base --version 1.0 demo-remote_producer" >> ${FUSE_INSTALL_LOG} 2>&1
+sh client -r 2 -d 10 "fabric:profile-create --parents demo-base --version 1.0 demo-remote_consumer" >> ${FUSE_INSTALL_LOG} 2>&1
+sh client -r 2 -d 10 "fabric:profile-create --parents demo-base --version 1.0 demo-claim_check" >> ${FUSE_INSTALL_LOG} 2>&1
 
 
 sh client -r 2 -d 10 "fabric:version-create --parent 1.0 --default 1.1" >> /dev/null 2>&1
